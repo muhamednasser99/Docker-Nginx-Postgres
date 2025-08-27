@@ -1,0 +1,42 @@
+services:
+  web_server:
+    build: .
+    container_name: nginx_server
+    ports:
+      - 8000:80
+    networks:
+      - mynet
+    depends_on:
+      - db
+    deploy:
+      resources:
+        limits:
+          memory: 512M        
+          cpus: 1             
+  
+  db:
+    image: postgres
+    container_name: postgres_db
+    networks:
+      - mynet
+    volumes:
+      - myvol:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: db
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - 8080:8080
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    name: web_net
+volumes:
+  myvol:
+    name: web_vol
+
