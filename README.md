@@ -17,4 +17,4 @@ The project includes three main parts:
 - Enables communication between the web server and the database container.
 
 ### 3️⃣ Resource Limiting
-- Run web server container with memory and CPU usage limits (memory=512m cpus= 1.0).
+- Run web server container with memory and CPU usage limits (memory= 512m, cpus= 1.0).
